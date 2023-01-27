@@ -8,7 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="generics" />
         <module name="oop-review" />
+        <module name="collections-review" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="generics" target="11" />
+      <module name="java-review" target="11" />
+      <module name="oop-review" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

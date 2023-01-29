@@ -6,9 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="generics" />
         <module name="oop-review" />
         <module name="collections-review" />
+        <module name="lambda" />
+        <module name="generics" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

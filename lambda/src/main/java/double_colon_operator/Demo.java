@@ -38,5 +38,11 @@ public class Demo {
 
         Consumer<Integer> display2 = System.out::println;
         display2.accept(50);
+
+
+        System.out.println("-----------------------------");
+        // if you give the Class type to the functional interface, you do not need to write New class type
+        BiFunction<MyClass, Integer, Double> v2 = MyClass::method;
+        BiFunction<String, String, String> v3 = String::concat;
     }
 }

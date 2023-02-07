@@ -28,6 +28,16 @@ public class CarTest {
         System.out.println("List of durable cars: " + filter(carList, new CarDurablePredicate()));
 
 
+        System.out.println("---------Lambda------------");
+        // -> fat arrow, lambda implementation
+        CarPredicate newCarLambda = car-> car.getYear() >2015;
+        List<Car> newCars = filter(carList, newCarLambda);
+        System.out.println("New cars: " + newCars);
+
+        List<Car> fastCars = filter(carList, car-> car.getTopSpeed() >160);
+        System.out.println("Fast cars: " + newCars);
+
+
     }
 
     // this is not a good practice, you need to write new method foreach different implementations

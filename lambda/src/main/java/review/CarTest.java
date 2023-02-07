@@ -38,6 +38,32 @@ public class CarTest {
         System.out.println("Fast cars: " + newCars);
 
 
+        // forEach method is one implementation of Consumer
+        System.out.println("----------------------");
+        carList.forEach(car -> System.out.println(car));
+
+
+
+        System.out.println("--------double colon operator-----------");
+        carList.forEach(System.out::println);
+        // if you have more than one step you cannot use double colon operator for each lambda
+        carList.forEach(Car::getMake); // we cannot print this one!
+        carList.forEach(car -> System.out.println(car.getMake()));
+
+        List<Car> anotherList = new ArrayList<Car>();
+
+        carList.forEach(car -> {
+            if (car.getYear() > 2005) anotherList.add(car);
+        });
+
+//        carList.forEach(car -> {
+//            if (car.getYear() > 2005) anotherList::add; // we cannot, because we have more than one step
+//        });
+
+
+
+
+
     }
 
     // this is not a good practice, you need to write new method foreach different implementations

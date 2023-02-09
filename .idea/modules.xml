@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/generics.iml" filepath="$PROJECT_DIR$/generics.iml" />
       <module fileurl="file://$PROJECT_DIR$/java-review.iml" filepath="$PROJECT_DIR$/java-review.iml" />
       <module fileurl="file://$PROJECT_DIR$/oop-review.iml" filepath="$PROJECT_DIR$/oop-review.iml" />
+      <module fileurl="file://$PROJECT_DIR$/streams.iml" filepath="$PROJECT_DIR$/streams.iml" />
     </modules>
   </component>
 </project>

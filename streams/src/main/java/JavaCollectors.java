@@ -40,5 +40,44 @@ public class JavaCollectors {
         Map<String, Integer> dishMap = DishData.getAll().stream()
                 .collect(Collectors.toMap(Dish::getName, Dish::getCalories));
         System.out.println(dishMap);
+
+        //counting(): returns a Collector that counts the number of the elements
+        System.out.println("--------counting---------");
+        Long evenCount = numbers.stream()
+                .filter(x -> x%2 == 0)
+                .collect(Collectors.counting());
+        System.out.println(evenCount);
+
+        //summingInt(ToIntFunction): returns a Collector that produces the sum of an integer-valued func
+        System.out.println("--------summingInt(ToIntFunction)---------");
+        Integer sum = DishData.getAll().stream()
+                .collect(Collectors.summingInt(Dish::getCalories));
+        System.out.println(sum);
+
+        //averageInt(ToIntFunction): returns a Collector that produces the sum of an integer-valued func
+        System.out.println("--------averageInt(ToIntFunction)---------");
+        Double average = DishData.getAll().stream()
+                .collect(Collectors.averagingInt(Dish::getCalories));
+        System.out.println(average);
+
+        //joining(): is used to join various elements of a character or string array into a single string object
+        System.out.println("--------joining()---------");
+        List<String> courses = Arrays.asList("Java", "JS", "TS");
+        String courses1 = courses.stream()
+                .collect(Collectors.joining(","));
+        System.out.println(courses1);
+
+        //partitioningBy(): is used to partition a stream of object (or set of elements) based on a given predicate
+        System.out.println("--------partitioningBy()---------");
+        Map<Boolean, List<Dish> >veggieDish = DishData.getAll().stream()
+                .collect(Collectors.partitioningBy(Dish::isVegetarian));
+        System.out.println(veggieDish);
+
+        //groupingBy(): is used for grouping objects by some property and sorting results in a map instance
+        System.out.println("--------groupingBy()---------");
+        Map<Type, List<Dish>> dishType = DishData.getAll().stream()
+                .collect(Collectors.groupingBy(Dish::getType));
+        System.out.println(dishType);
+
     }
 }

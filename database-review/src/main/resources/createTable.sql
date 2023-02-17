@@ -1,28 +1,39 @@
-create table Towns(
-                      id serial unique not null,
-                      code varchar(10) not null, -- not unique
-                      article text,
-                      name text not null -- not unique
-);
+CREATE OR REPLACE FUNCTION get_department_count_by_name(dep_name varchar)
+        returns int
+        language plpgsql
+as
+$$
+declare
+department_count integer;
+begin
+select count(*)
+into department_count
+from employees
+where department = dep_name;
 
-insert into towns( code, article, name)
-select
-    left(md5(i::text), 10),
-    md5(random()::text),
-    md5(random()::text)
-from generate_series(1, 1000000) s(i);
+return department_count;
+end
+$$;
 
-select * from towns;
+select get_department_count_by_name('Furniture');
 
-select count(*) from towns;
+DROP FUNCTION get_department_count_by_name(dep_name varchar);
 
-explain analyse
-select * from towns where name = '780ed429fccdcf213566ab7397c10e46';
 
-explain analyse select * from towns where id = 1232;
+CREATE OR REPLACE FUNCTION get_department(p_pattern varchar)
+returns table(
+    employee_name varchar,
+    employee_email varchar
+            )
+language plpgsql
+as
+    $$
+begin
+return query
+select first_name,email
+from employees
+where department ilike p_pattern;
+end;
+    $$
 
-create index idx_towns_name on towns(name);
-create index idx_towns_article on towns(article);
-
-drop index if exists idx_towns_name;
-
+select * from get_department('%G%');

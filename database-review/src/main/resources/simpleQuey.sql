@@ -245,3 +245,5 @@ select first_name,
            else ''unpaid''
            end as category
 from employees;
+
+
